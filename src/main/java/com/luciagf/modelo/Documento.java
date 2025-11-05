@@ -8,8 +8,9 @@ public class Documento {
 	private String nombreArchivo;
 	private String tipo;
 	private Date fechaSubida;
-	private Usuario subidaPor;
 	private String ruta;
+	private Usuario subidaPor;
+	private FormacionEmpresa formacion;
 	
 	
 	
@@ -22,15 +23,16 @@ public class Documento {
 
 
 
-	public Documento(int idDocumento, String nombreArchivo, String tipo, Date fechaSubida, Usuario subidaPor,
-			String ruta) {
+	public Documento(int idDocumento, String nombreArchivo, String tipo, Date fechaSubida, String ruta,
+			Usuario subidaPor, FormacionEmpresa formacion) {
 		super();
 		this.idDocumento = idDocumento;
 		this.nombreArchivo = nombreArchivo;
 		this.tipo = tipo;
 		this.fechaSubida = fechaSubida;
-		this.subidaPor = subidaPor;
 		this.ruta = ruta;
+		this.subidaPor = subidaPor;
+		this.formacion = formacion;
 	}
 
 
@@ -92,6 +94,20 @@ public class Documento {
 
 
 
+	public String getRuta() {
+		return ruta;
+	}
+
+
+
+
+	public void setRuta(String ruta) {
+		this.ruta = ruta;
+	}
+
+
+
+
 	public Usuario getSubidaPor() {
 		return subidaPor;
 	}
@@ -106,16 +122,19 @@ public class Documento {
 
 
 
-	public String getRuta() {
-		return ruta;
+	public FormacionEmpresa getFormacion() {
+		return formacion;
 	}
 
 
 
 
-	public void setRuta(String ruta) {
-		this.ruta = ruta;
+	public void setFormacion(FormacionEmpresa formacion) {
+		this.formacion = formacion;
 	}
+	
+	
+	
 	
 	
 	
