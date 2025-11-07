@@ -9,11 +9,10 @@ public class FormacionEmpresa {
 	private Estudiante estudiante;
 	private Empresa empresa;
 	private TutorEmpresa tutorEmpresa;
-	private Profesor profesorCoordinador; 
+	private Profesor profesorCoordinador;
 	private Periodo periodo;
 	private Date fechaInicio;
 	private Date fechaFin;
-	private List<Documento>documentos;
-	
-	
+	private List<Documento> documentos;
+
 }

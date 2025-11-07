@@ -1,7 +1,7 @@
 package com.luciagf.modelo;
 
 public enum RolUsuario {
-	
-ADMIN, PROFSOR, TUTOR_EMPRESA, ESTUDIANTE;
-	
+
+	ADMIN, PROFSOR, TUTOR_EMPRESA, ESTUDIANTE;
+
 }

@@ -2,12 +2,12 @@ package com.luciagf.modelo;
 
 import java.util.List;
 
-public class Profesor extends Usuario{
+public class Profesor extends Usuario {
 
 	private String curso;
 	private List<Grupo> grupos;
-	
-	private List<FormacionEmpresa>formaciones;
+
+	private List<FormacionEmpresa> formaciones;
 
 	public Profesor() {
 		super();
@@ -28,8 +28,6 @@ public class Profesor extends Usuario{
 		this.curso = curso;
 	}
 
-
-
 	public List<FormacionEmpresa> getFormaciones() {
 		return formaciones;
 	}
@@ -37,7 +35,5 @@ public class Profesor extends Usuario{
 	public void setFormaciones(List<FormacionEmpresa> formaciones) {
 		this.formaciones = formaciones;
 	}
-	
-	
-	
+
 }

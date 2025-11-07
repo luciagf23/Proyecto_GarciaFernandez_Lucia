@@ -10,8 +10,8 @@ public class Periodo {
 	private String cursoAcademico;
 	private Date fechaInicio;
 	private Date fechaFin;
-	private List<FormacionEmpresa>formaciones;
-	
+	private List<FormacionEmpresa> formaciones;
+
 	public Periodo() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -75,10 +75,5 @@ public class Periodo {
 	public void setFormaciones(List<FormacionEmpresa> formaciones) {
 		this.formaciones = formaciones;
 	}
-	
-	
-	
-	
-	
-	
-	}
+
+}

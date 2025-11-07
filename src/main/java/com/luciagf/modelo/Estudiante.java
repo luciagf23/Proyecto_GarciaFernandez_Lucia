@@ -2,17 +2,17 @@ package com.luciagf.modelo;
 
 import java.util.List;
 
-public class Estudiante extends Usuario{
-	
+public class Estudiante extends Usuario {
+
 	private String curso;
 	private Grupo grupo;
 	private List<FormacionEmpresa> formaciones;
-	
+
 	public Estudiante() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public Estudiante(int idUsuario, String nombre, String apellido, String email, String usuario, String contraseña,
 			RolUsuario rol) {
 		super(idUsuario, nombre, apellido, email, usuario, contraseña, rol);
@@ -43,7 +43,4 @@ public class Estudiante extends Usuario{
 		this.formaciones = formaciones;
 	}
 
-	
-	
-	
 }
