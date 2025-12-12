@@ -36,6 +36,16 @@ public class BaseApplication extends Application {
     }
 
     protected void displayInitialScene() {
-        stageManager.switchScene(FxmlView.LOGIN); // Pantalla de login inicial
+        stageManager.switchScene(FxmlView.INICIO);
+        
+        new Thread(() -> {
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException ignored) {}
+
+            javafx.application.Platform.runLater(() ->
+                stageManager.switchScene(FxmlView.LOGIN)
+            );
+        }).start();
     }
 }

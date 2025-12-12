@@ -24,7 +24,20 @@ public enum FxmlView {
 		public String getFxmlFile() {
 			return "/fxml/Login.fxml";
 		}
+	},
+	
+	INICIO {
+		@Override
+		public String getTitle() {
+			return null;
+		}
+
+		@Override
+		public String getFxmlFile() {
+			return "/fxml/Inicio.fxml";
+		}
 	};
+
 
 	public abstract String getTitle();
 
