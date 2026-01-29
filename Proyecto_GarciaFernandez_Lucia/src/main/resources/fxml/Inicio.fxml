@@ -6,7 +6,11 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
+<<<<<<< HEAD
 <AnchorPane stylesheets="@../styles/Styles.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.luisdbb.tarea3AD2024base.controller.LoginController">
+=======
+<AnchorPane stylesheets="@../styles/Styles.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+>>>>>>> branch 'main' of https://github.com/luciagf23/Proyecto_GarciaFernandez_Lucia.git
    <children>
       <Rectangle fill="DODGERBLUE" height="250.0" layoutX="-4.0" stroke="#ffffff8b" strokeType="INSIDE" width="400.0" />
       <Label fx:id="lblLogin" layoutX="79.0" layoutY="50.0" text="Proyecto Intermodular" textFill="WHITE">
