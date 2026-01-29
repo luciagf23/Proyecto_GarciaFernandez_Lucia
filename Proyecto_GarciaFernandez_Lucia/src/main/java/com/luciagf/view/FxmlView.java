@@ -24,9 +24,8 @@ public enum FxmlView {
 		public String getFxmlFile() {
 			return "/fxml/Login.fxml";
 		}
-<<<<<<< HEAD
-	};
-=======
+
+
 	},
 	
 	INICIO {
@@ -41,7 +40,6 @@ public enum FxmlView {
 		}
 	};
 
->>>>>>> branch 'main' of https://github.com/luciagf23/Proyecto_GarciaFernandez_Lucia.git
 
 	public abstract String getTitle();
 
