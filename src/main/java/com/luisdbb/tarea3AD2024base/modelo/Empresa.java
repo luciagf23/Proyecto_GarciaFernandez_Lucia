@@ -3,15 +3,28 @@ package com.luisdbb.tarea3AD2024base.modelo;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "empresas")
 public class Empresa {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idEmpresa;
 	private String nombre;
 	private String direccion;
 	private String telefono;
 	private String email;
 
+	@OneToMany(mappedBy = "empresa")
 	private List<TutorEmpresa> tutores = new ArrayList<>();
+	@OneToMany(mappedBy = "empresa")
 	private List<FormacionEmpresa> formaciones = new ArrayList<>();
 
 	public Empresa() {

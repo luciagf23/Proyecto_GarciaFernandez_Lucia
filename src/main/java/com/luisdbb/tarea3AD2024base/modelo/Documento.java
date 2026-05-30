@@ -2,6 +2,8 @@ package com.luisdbb.tarea3AD2024base.modelo;
 
 import java.util.Date;
 
+import jakarta.persistence.ManyToOne;
+
 public class Documento {
 
 	private int idDocumento;
@@ -10,6 +12,7 @@ public class Documento {
 	private Date fechaSubida;
 	private String ruta;
 	private User subidaPor;
+	@ManyToOne
 	private FormacionEmpresa formacion;
 
 	public Documento() {

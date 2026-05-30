@@ -21,7 +21,24 @@ public class SpringFXMLLoader {
         this.resourceBundle = resourceBundle;
         this.context = context;
     }
+    
+    public Parent load(String fxmlPath) throws IOException {
 
+        System.out.println("FXML: " + fxmlPath);
+
+        var url = getClass().getResource(fxmlPath);
+
+        System.out.println("URL encontrada: " + url);
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setControllerFactory(context::getBean);
+        loader.setResources(resourceBundle);
+        loader.setLocation(url);
+
+        return loader.load();
+    }
+
+    /*
     public Parent load(String fxmlPath) throws IOException {      
         FXMLLoader loader = new FXMLLoader();
         loader.setControllerFactory(context::getBean); //Spring now FXML Controller Factory
@@ -29,5 +46,6 @@ public class SpringFXMLLoader {
         loader.setLocation(getClass().getResource(fxmlPath));
         return loader.load();
     }
+    */
 }
 

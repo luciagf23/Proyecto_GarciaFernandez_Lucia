@@ -5,6 +5,7 @@ import static org.slf4j.LoggerFactory.getLogger;
 import java.util.Objects;
 
 import org.slf4j.Logger;
+import org.springframework.stereotype.Component;
 
 import com.luisdbb.tarea3AD2024base.view.FxmlView;
 
@@ -13,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+@Component
 public class StageManager {
 
 	private static final Logger LOG = getLogger(StageManager.class);
@@ -68,7 +70,10 @@ public class StageManager {
             rootNode = springFXMLLoader.load(fxmlFilePath);
             Objects.requireNonNull(rootNode, "A Root FXML node must not be null");
         } catch (Exception exception) {
-            logAndExit("Unable to load FXML view" + fxmlFilePath, exception);
+        	System.out.println("ERROR REAL:");
+            exception.printStackTrace();
+            throw new RuntimeException(exception);
+        	//logAndExit("Unable to load FXML view" + fxmlFilePath, exception);
         }
         return rootNode;
     }

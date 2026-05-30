@@ -2,6 +2,13 @@ package com.luisdbb.tarea3AD2024base.modelo;
 
 import java.util.List;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "grupos")
 public class Grupo {
 
 	private int idGrupo;
@@ -9,7 +16,10 @@ public class Grupo {
 	private String ciclo;
 	private int curso;
 	private String anioAcademico;
+	
+	@ManyToOne
 	private Profesor tutor;
+	@OneToMany(mappedBy = "grupo")
 	private List<Estudiante> estudiantes;
 
 	public Grupo() {

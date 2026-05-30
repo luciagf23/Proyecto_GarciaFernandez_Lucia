@@ -14,6 +14,10 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 
 import com.luisdbb.tarea3AD2024base.config.StageManager;
+import com.luisdbb.tarea3AD2024base.modelo.Estudiante;
+import com.luisdbb.tarea3AD2024base.modelo.Profesor;
+import com.luisdbb.tarea3AD2024base.modelo.RolUsuario;
+import com.luisdbb.tarea3AD2024base.modelo.TutorEmpresa;
 import com.luisdbb.tarea3AD2024base.modelo.User;
 import com.luisdbb.tarea3AD2024base.services.UserService;
 import com.luisdbb.tarea3AD2024base.view.FxmlView;
@@ -76,7 +80,7 @@ public class UserController implements Initializable {
 	private RadioButton rbFemale;
 
 	@FXML
-	private ComboBox<String> cbRole;
+	private ComboBox<RolUsuario> roleComboBox;
 
 	@FXML
 	private TextField email;
@@ -109,7 +113,7 @@ public class UserController implements Initializable {
 	private TableColumn<User, String> colGender;
 
 	@FXML
-	private TableColumn<User, String> colRole;
+	private TableColumn<User, RolUsuario> colRole;
 
 	@FXML
 	private TableColumn<User, String> colEmail;
@@ -128,7 +132,8 @@ public class UserController implements Initializable {
 	private UserService userService;
 
 	private ObservableList<User> userList = FXCollections.observableArrayList();
-	private ObservableList<String> roles = FXCollections.observableArrayList("Admin", "User");
+	private ObservableList<RolUsuario> roles =
+	        FXCollections.observableArrayList(RolUsuario.values());
 
 	@FXML
 	private void exit(ActionEvent event) {
@@ -159,7 +164,26 @@ public class UserController implements Initializable {
 				if (validate("Email", getEmail(), "[a-zA-Z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+")
 						&& emptyValidation("Password", getPassword().isEmpty())) {
 
-					User user = new User();
+					RolUsuario rol = roleComboBox.getValue();
+
+					User user;
+
+					switch (rol) {
+					    case PROFESOR:
+					        user = new Profesor();
+					        break;
+
+					    case ESTUDIANTE:
+					        user = new Estudiante();
+					        break;
+
+					    case TUTOR_EMPRESA:
+					        user = new TutorEmpresa();
+					        break;
+					    
+					    default:
+					        throw new IllegalArgumentException();
+					}
 					user.setFirstName(getFirstName());
 					user.setLastName(getLastName());
 					user.setDob(getDob());
@@ -213,7 +237,7 @@ public class UserController implements Initializable {
 		dob.getEditor().clear();
 		rbMale.setSelected(true);
 		rbFemale.setSelected(false);
-		cbRole.getSelectionModel().clearSelection();
+		roleComboBox.getSelectionModel().clearSelection();
 		email.clear();
 		password.clear();
 	}
@@ -256,9 +280,14 @@ public class UserController implements Initializable {
 	public String getGender() {
 		return rbMale.isSelected() ? "Male" : "Female";
 	}
+	
 
-	public String getRole() {
-		return cbRole.getSelectionModel().getSelectedItem();
+	public ComboBox<RolUsuario> getRoleComboBox() {
+		return roleComboBox;
+	}
+
+	public void setRoleComboBox(ComboBox<RolUsuario> roleComboBox) {
+		this.roleComboBox = roleComboBox;
 	}
 
 	public String getEmail() {
@@ -268,11 +297,26 @@ public class UserController implements Initializable {
 	public String getPassword() {
 		return password.getText();
 	}
+	
+	
+	
+	public void setRoles(ObservableList<RolUsuario> roles) {
+		this.roles = roles;
+	}
+
+	public RolUsuario getRole() {
+	    return roleComboBox.getValue();
+	}
+
+
+	public void setRole(ObservableList<RolUsuario> roles) {
+		this.roles = roles;
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		cbRole.setItems(roles);
+		roleComboBox.setItems(roles);
 
 		userTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
@@ -352,7 +396,7 @@ public class UserController implements Initializable {
 						rbMale.setSelected(true);
 					else
 						rbFemale.setSelected(true);
-					cbRole.getSelectionModel().select(user.getRole());
+					roleComboBox.getSelectionModel().select(user.getRole());
 				}
 			};
 			return cell;

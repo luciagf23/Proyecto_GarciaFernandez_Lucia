@@ -2,6 +2,12 @@ package com.luisdbb.tarea3AD2024base.modelo;
 
 import java.util.List;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+
+@Entity
+@Table(name = "tutores_empresa")
 public class TutorEmpresa extends User {
 
 	private Empresa empresa;

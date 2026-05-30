@@ -1,15 +1,28 @@
 package com.luisdbb.tarea3AD2024base.modelo;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "periodos")
 public class Periodo {
 
 	private int idPeriodo;
-	private String tipo;
+	
+	@Enumerated(EnumType.STRING)
+	private TipoPeriodo tipo;
+	
 	private String cursoAcademico;
-	private Date fechaInicio;
-	private Date fechaFin;
+	
+	private LocalDate fechaInicio;
+	private LocalDate fechaFin;
+	@OneToMany(mappedBy = "periodo")
 	private List<FormacionEmpresa> formaciones;
 
 	public Periodo() {
@@ -17,7 +30,9 @@ public class Periodo {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Periodo(int idPeriodo, String tipo, String cursoAcademico, Date fechaInicio, Date fechaFin,
+	
+
+	public Periodo(int idPeriodo, TipoPeriodo tipo, String cursoAcademico, LocalDate fechaInicio, LocalDate fechaFin,
 			List<FormacionEmpresa> formaciones) {
 		super();
 		this.idPeriodo = idPeriodo;
@@ -28,52 +43,80 @@ public class Periodo {
 		this.formaciones = formaciones;
 	}
 
+
+
 	public int getIdPeriodo() {
 		return idPeriodo;
 	}
+
+
 
 	public void setIdPeriodo(int idPeriodo) {
 		this.idPeriodo = idPeriodo;
 	}
 
-	public String getTipo() {
+
+
+	public TipoPeriodo getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(String tipo) {
+
+
+	public void setTipo(TipoPeriodo tipo) {
 		this.tipo = tipo;
 	}
+
+
 
 	public String getCursoAcademico() {
 		return cursoAcademico;
 	}
 
+
+
 	public void setCursoAcademico(String cursoAcademico) {
 		this.cursoAcademico = cursoAcademico;
 	}
 
-	public Date getFechaInicio() {
+
+
+	public LocalDate getFechaInicio() {
 		return fechaInicio;
 	}
 
-	public void setFechaInicio(Date fechaInicio) {
+
+
+	public void setFechaInicio(LocalDate fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
 
-	public Date getFechaFin() {
+
+
+	public LocalDate getFechaFin() {
 		return fechaFin;
 	}
 
-	public void setFechaFin(Date fechaFin) {
+
+
+	public void setFechaFin(LocalDate fechaFin) {
 		this.fechaFin = fechaFin;
 	}
+
+
 
 	public List<FormacionEmpresa> getFormaciones() {
 		return formaciones;
 	}
 
+
+
 	public void setFormaciones(List<FormacionEmpresa> formaciones) {
 		this.formaciones = formaciones;
 	}
+
+
+
+
 
 }

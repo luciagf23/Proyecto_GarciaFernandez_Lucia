@@ -6,6 +6,8 @@ import org.springframework.data.annotation.Id;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
@@ -29,7 +31,8 @@ public class User {
 
 	private String gender;
 
-	private String role;
+	@Enumerated(EnumType.STRING)
+	private RolUsuario role;
 
 	@Column(unique=true)
 	private String email;
@@ -76,12 +79,12 @@ public class User {
 		this.gender = gender;
 	}
 
-	public String getRole() {
-		return role;
+	public RolUsuario getRole() {
+	    return role;
 	}
 
-	public void setRole(String role) {
-		this.role = role;
+	public void setRole(RolUsuario role) {
+	    this.role = role;
 	}
 
 	public String getEmail() {
