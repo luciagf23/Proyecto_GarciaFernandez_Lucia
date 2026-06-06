@@ -2,26 +2,40 @@ package com.luisdbb.tarea3AD2024base.modelo;
 
 import java.util.Date;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "documento")
 public class Documento {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idDocumento;
+
 	private String nombreArchivo;
 	private String tipo;
 	private Date fechaSubida;
 	private String ruta;
-	private User subidaPor;
+
 	@ManyToOne
+	@JoinColumn(name = "subida_por_id")
+	private User subidaPor;
+
+	@ManyToOne
+	@JoinColumn(name = "formacion_id")
 	private FormacionEmpresa formacion;
 
 	public Documento() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Documento(int idDocumento, String nombreArchivo, String tipo, Date fechaSubida, String ruta,
-			User subidaPor, FormacionEmpresa formacion) {
+	public Documento(int idDocumento, String nombreArchivo, String tipo, Date fechaSubida, String ruta, User subidaPor,
+			FormacionEmpresa formacion) {
 		super();
 		this.idDocumento = idDocumento;
 		this.nombreArchivo = nombreArchivo;

@@ -11,10 +11,8 @@ import com.luisdbb.tarea3AD2024base.modelo.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-	static User findByEmail(String email) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
-	Optional<User> findByNombreUsuario(String username);
+	Optional<User> findByEmail(String email);
+	
+	Optional<User> findByUsername(String username);
 }

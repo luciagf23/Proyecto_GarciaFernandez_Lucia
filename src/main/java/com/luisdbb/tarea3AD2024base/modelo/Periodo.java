@@ -3,32 +3,37 @@ package com.luisdbb.tarea3AD2024base.modelo;
 import java.time.LocalDate;
 import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "periodos")
+@Table(name = "periodo")
 public class Periodo {
 
-	private int idPeriodo;
-	
-	@Enumerated(EnumType.STRING)
-	private TipoPeriodo tipo;
-	
-	private String cursoAcademico;
-	
-	private LocalDate fechaInicio;
-	private LocalDate fechaFin;
-	@OneToMany(mappedBy = "periodo")
-	private List<FormacionEmpresa> formaciones;
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_periodo")
+    private int idPeriodo;
 
-	public Periodo() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+    @Enumerated(EnumType.STRING)
+    private TipoPeriodo tipo;
+
+    private String cursoAcademico;
+
+    private LocalDate fechaInicio;
+    private LocalDate fechaFin;
+
+    @OneToMany(mappedBy = "periodo")
+    private List<FormacionEmpresa> formaciones;
+
+    public Periodo() {}
 
 	
 

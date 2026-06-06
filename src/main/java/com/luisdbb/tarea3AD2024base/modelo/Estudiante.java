@@ -3,22 +3,28 @@ package com.luisdbb.tarea3AD2024base.modelo;
 import java.util.List;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 
 
 @Entity
-@Table(name = "estudiantes")
 public class Estudiante extends User {
 
 	private String curso;
-	private Grupo grupo;
-	private List<FormacionEmpresa> formaciones;
 
-	public Estudiante() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+    @ManyToOne
+    @JoinColumn(name = "grupo_id")
+    private Grupo grupo;
+
+    @OneToMany(mappedBy = "estudiante")
+    private List<FormacionEmpresa> formaciones;
+
+    public Estudiante() {
+        super();
+    }
 
 	
 

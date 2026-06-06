@@ -2,9 +2,12 @@ package com.luisdbb.tarea3AD2024base.modelo;
 
 import java.time.LocalDate;
 
-import org.springframework.data.annotation.Id;
-
+import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorColumn;
+import jakarta.persistence.DiscriminatorType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -12,16 +15,18 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
 
-
-
 @Entity
-@Table(name = "Usuario")
+@Table(name = "usuario")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "tipo_usuario", discriminatorType = DiscriminatorType.STRING)
 public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", updatable = false, nullable = false)
 	private long id;
+
+	@Column(unique = true, nullable = false)
+	private String username;
 
 	private String firstName;
 
@@ -34,10 +39,13 @@ public class User {
 	@Enumerated(EnumType.STRING)
 	private RolUsuario role;
 
-	@Column(unique=true)
+	@Column(unique = true)
 	private String email;
 
 	private String password;
+
+	public User() {
+	}
 
 	public long getId() {
 		return id;
@@ -45,6 +53,14 @@ public class User {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getFirstName() {
@@ -80,11 +96,11 @@ public class User {
 	}
 
 	public RolUsuario getRole() {
-	    return role;
+		return role;
 	}
 
 	public void setRole(RolUsuario role) {
-	    this.role = role;
+		this.role = role;
 	}
 
 	public String getEmail() {

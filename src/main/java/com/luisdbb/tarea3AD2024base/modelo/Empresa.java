@@ -11,12 +11,13 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "empresas")
+@Table(name = "empresa")
 public class Empresa {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idEmpresa;
+
 	private String nombre;
 	private String direccion;
 	private String telefono;
@@ -24,12 +25,11 @@ public class Empresa {
 
 	@OneToMany(mappedBy = "empresa")
 	private List<TutorEmpresa> tutores = new ArrayList<>();
+
 	@OneToMany(mappedBy = "empresa")
 	private List<FormacionEmpresa> formaciones = new ArrayList<>();
 
 	public Empresa() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Empresa(int idEmpresa, String nombre, String direccion, String telefono, String email,

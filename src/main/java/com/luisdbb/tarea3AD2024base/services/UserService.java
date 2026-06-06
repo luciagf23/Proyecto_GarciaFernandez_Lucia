@@ -19,46 +19,41 @@ public class UserService {
 		this.usuarioRepository = usuarioRepository;
 	}
 
-	// Guardar o actualizar
 	public User save(User usuario) {
 		return usuarioRepository.save(usuario);
 	}
 
-	// Eliminar por ID
 	public void deleteById(Long id) {
 		usuarioRepository.deleteById(id);
 	}
 
-	// Buscar todos
 	public List<User> findAll() {
 		return usuarioRepository.findAll();
 	}
 
-	public boolean authenticate(String nombre, String contrasenia) {
-		User usuario = this.findByEmail(nombre);
-		if (usuario == null) {
+	public boolean authenticate(String username,String contrasenia) {
+		Optional<User> usuarioOpt = usuarioRepository.findByUsername(username);
+
+		if (usuarioOpt.isEmpty()) {
 			return false;
-		} else {
-			if (contrasenia.equals(usuario.getPassword()))
-				return true;
-			else
-				return false;
 		}
+
+		User usuario = usuarioOpt.get();
+		return contrasenia.equals(usuarioOpt.get().getPassword());
 	}
 
-	public User findByEmail(String email) {
-		return UserRepository.findByEmail(email);
+	public Optional<User> findByEmail(String email) {
+		return usuarioRepository.findByEmail(email);
 	}
 
-	// Buscar por ID
 	public Optional<User> findById(Long id) {
 		return usuarioRepository.findById(id);
 	}
 
-	// Buscar por nombre de usuario
-	public Optional<User> findByNombreUsuario(String username) {
-		return usuarioRepository.findByNombreUsuario(username);
+	public Optional<User> findByUsername(String username) {
+	    return usuarioRepository.findByUsername(username);
 	}
+
 
 	public User find(long long1) {
 		// TODO Auto-generated method stub
